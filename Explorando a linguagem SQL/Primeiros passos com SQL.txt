@@ -1,0 +1,31 @@
+
+SQL básico, DDL e DML
+Exploirando SGBDs: MySQL e PostgresSQL
+
+Linguagem para:
+    Manipulação de dados
+    Execução de dados
+    DBAs - 
+    BI - Bussines Intelligence
+    Devs
+    DS - Data Science
+
+---- sublinguagens
+
+DDL - Data Definition Language - Create, Drop, Rename, Update, Delete, Alter, Truncate, Merge
+
+---- Primeiro Exemplo
+
+use test
+CREATE TABLE person
+    (person_id SMALLINT UNSIGNED,
+    fname VARCHAR(20)
+    )
+
+---- Primeiro Contato
+
+no arquivo SQL
+
+------- Considerações sobre o ambiente de trabalho
+
+Permissões e proibições de usuários
