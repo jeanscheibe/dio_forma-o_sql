@@ -29,3 +29,72 @@ no arquivo SQL
 ------- Considerações sobre o ambiente de trabalho
 
 Permissões e proibições de usuários
+
+---------
+
+SELECT now() - Datatime da máquina
+SELECT now() FROM dual - 
+
+SELECT
+FROM
+WHERE
+ORDER BY
+GROUP BY
+HAVING
+
+IDENTIFICADOR
+OPERADOR
+CONSTANTE
+EXPRESSÃO
+
+Tipos de dados no MySQL
+
+char(20)      /* fixed length    */ fixo - 255 bytes
+varchar(20)   /* variable-length */ variável - 65.535 bytes
+
+show character set - para ver o conjunto de caracteres definido para o projeto
+
+--------- constraints
+
+Not null
+Primary Key
+Foreign Key
+Default - possibilita criar um valor padrão para um determinado atributo
+Check - Checa se o valor que está sendo inserido está dentro do domínio
+
+create domain D_NUM as INTEGER
+CHECK (D_NUM > 0 AND D_NUM<21);
+
+Delete
+Unique
+
+Referencial Triggered Action - Quando há violação das constraints ele resiste (não armazena)
+
+Row Based - CHECK (Dept_create_date<=Mgr_start_date)
+
+------------ Queries
+
+Multiset/No set
+
+Duplicações (Redundâncias)
+    Custoso - melhor prevenir
+    Pode ser desejada pelo usuário
+
+Distinct - Select distinct salary from employee - Pega apenas a primeira ocorrência para cada valor de salário(Não puxa as redundâncias)
+
+Operadores
+
+=, <, <=, >, >=, e <>
++, -, *, /
+AND, OR, XOR, NOT
+TRUE, FALSE
+
+----- DML
+
+Subconjunto do SQL, mais utilizado
+
+INSERT INTO <table> (<list-attributes>) VALUES (<list-values>);
+
+-------- when good statments go bad
+
+

@@ -99,3 +99,18 @@ alter table dept_locations
 	add constraint fk_dept_locations foreign key (Dnumber) references department(Dnumber)
     on delete cascade
     on update cascade;
+
+-- recuperando todos os gerentes que trabalham em Stafford
+select Dname as Department_Name, concat(Fname, ' ', Lname) as Manager from department d, dept_locations l, employee e
+    where d.Dnumber = l.Dnumber and Dlocation='Stafford' and Mgr_ssn = e.Ssn;
+
+-- recuperando todos os gerentes que trabalham, departamentos e seus nomes
+select Dname as Department_Name, concat(Fname, ' ', Lname) as Manager, Dlocation from department d, dept_locations l, employee e
+    where d.Dnumber = l.Dnumber and Mgr_ssn = e.Ssn;
+    
+-- like e between
+select * from employee;
+
+update employee set Fname='Winston' where Fname='John';
+
+

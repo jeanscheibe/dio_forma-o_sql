@@ -1,0 +1,66 @@
+DDL - Data Definition Language
+
+INSERT
+UPDATE - Modificação a partir de condição
+    UPDATE table_name
+    SET column_1 = value_1, column_2 = value_2,
+    WHERE condition;
+
+DROP - Remoção de estruturas
+    DROP DATABASE databasename;
+
+DELETE - Remoção de registros
+    DELETE FROM table_name WHERE condition,
+
+ALTER - Modificação da estrutura do BD
+    ALTER TABLE Customers ADD Email varchar(255);
+
+CREATE
+RENAME
+TRUCATE
+MERGE
+
+-------------------------------------------------
+
+Elaborando queries SQL com Expressões
+
+atributos aritméticos
+Operações matemáticas
+Tipos de dados: string e numérico
+
+Armazenamento: dados simples
+Resltado de expressões: dados complexos
+Plus: utilizar alias
+
+concatenar informações
+
+SELECT Fname, Minit, Lname ||','||','|| STATE AS complete_name FROM employee;
+
+------- introdulção a operações de conjuntos com SQL
+
+Like
+Between
+
+Comparação, string match e caracteres especiais % e _
+
+SELECT Fname, Lname FROM employee where address like '%Houston, TX%' - Seleciona resultados parcialmente parecidos
+
+_ - match total
+% - match parcial
+
+SELECT * FROM employee WHERE (Salary BETWEEN 30000 AND 40000) AND Dno = 5; 
+
+---------- Mais expressões e Operações de conjuntos
+
+recuperando informações for departamentos presentes em Stanford
+
+select Dnam, Mgr_ssn as Manager from department d, dept_locations l, employee e
+    where d.Dnumber = l.Dnumber and dLocaltion='Stafford';
+
+mesma querie acima, com mais detalhes
+
+select Dname, Mgr_ssn as Manager from department d, dept_locations l, employee e
+    where d.Dnumber = l.Dnumber and dLocaltion='Stafford' and Mgr_ssn = e.Ssn;
+
+select Dname as Department_Name, concat(Fname, ' ', Lname) as Manager from department d, dept_locations l, employee e
+    where d.Dnumber = lDnumber and Dlocation='Stafford' and Mer ssn = e.Ssn;
