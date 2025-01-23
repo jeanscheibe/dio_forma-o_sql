@@ -1,0 +1,4 @@
+- Mapeamento do esquema ER para relacional
+- Definição do script SQL para criação do esquema de banco de dados
+- Persistência de dados para testes
+- Recuperação de informações com queries SQL

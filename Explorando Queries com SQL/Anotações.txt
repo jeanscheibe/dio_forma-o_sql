@@ -64,3 +64,35 @@ select Dname, Mgr_ssn as Manager from department d, dept_locations l, employee e
 
 select Dname as Department_Name, concat(Fname, ' ', Lname) as Manager from department d, dept_locations l, employee e
     where d.Dnumber = lDnumber and Dlocation='Stafford' and Mer ssn = e.Ssn;
+
+-------- mais operadores lógicos
+
+--------Comandos baseados em operções matemáticas
+
+UNION
+UNION ALL
+INTERSECT
+EXCEPT
+
+------ Nested queries
+
+Comparação por atributos buscados
+Nested Query - Consulta aninhada
+Consulta externa e interna
+
+in -  comparação com SET
+
+= - comparação com unidades
+
+Any
+some
+ALL
+
+Exists - True se o resultado da consulta aninhada contiver ao menos uma tupla
+
+Not Exists - True se o resultado da consulta aninhada não contiver ao menos uma tupla
+
+unique - True se o retorno tiver um único resultado
+
+-- Criando subqueries para recuperar informações nobanco de dados
+

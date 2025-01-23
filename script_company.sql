@@ -108,9 +108,81 @@ select Dname as Department_Name, concat(Fname, ' ', Lname) as Manager from depar
 select Dname as Department_Name, concat(Fname, ' ', Lname) as Manager, Dlocation from department d, dept_locations l, employee e
     where d.Dnumber = l.Dnumber and Mgr_ssn = e.Ssn;
     
+-- fazendo update do nome do empregado porque li 1984 recentemente
+update employee set Fname='Winston' where Fname='John';
+
 -- like e between
 select * from employee;
 
-update employee set Fname='Winston' where Fname='John';
+select concat(Fname, ' ', Lname) Complete_name, Address as department_name from employee, department
+	where (Dno=Dnumber and Address like '%Houston%');
+    
+select concat(Fname, ' ', Lname) Complete_name, Address from employee
+	where (Address like '%Houston%');
+
+select Fname, Lname from employee where (Salary > 30000 and Salary < 40000);
+
+select concat(Fname, ' ', Lname) as complete_name from employee where (Salary between 20000 and 40000);
+
+-- mais operadores lógicos
+
+-- and
+select Bdate, Address from employee where Fname='Winston' and Minit='B' and Lname='Smith';
+
+-- or
+select * from department where Dname='Research' or Dname ='Administration';
 
 
+select concat(Fname, ' ',Lname) as complete_name from employee, department where Dname='Research' and Dnumber=Dno;
+
+-- subqueries
+
+select distinct Pnumber from project
+	where Pnumber in
+		(
+		select Pnumber
+		from project, department, employee
+		where Mgr_ssn = Ssn and Lname='Smith' and Dnum=Dnumber
+		)
+    
+    or
+    
+		(
+		select distinct Pno
+        from works_on, employee
+        where (Essn=Ssn and Lname='Smith'
+		)
+	);
+
+select distinct * from works_on
+	where (Pno, Hours) IN (select PNO, Hours
+							from works_on
+                            where Essn=123456789);
+
+
+-- Cláusulas com exists e unique
+
+-- quais employees possuem dependentes
+select Fname, Lname from employee as e
+	where exists (select * from dependent as d
+					where e.Ssn = d.Essn);
+                    
+-- quais employees possuem filhas
+select Fname, Lname from employee as e
+	where exists (select * from dependent as d
+					where e.Ssn = d.Essn and Relationship = 'Daughter');
+                    
+-- quais employees não possuem dependentes
+select Fname, Lname from employee as e
+	where not exists (select * from dependent as d
+					where e.Ssn = d.Essn);
+
+-- quais employees não possuem dependentes
+select e.Fname, e.Lname from employee as e, department d
+	where (e.Ssn = d.Essn) and exists (select * from dependent as d where e.Ssn = d.Essn); -- não funcionou
+
+-- quem tem menos de, ou, dois filhos
+select Fname, Lname from employee
+	where (select count(*) from dependent where Ssn=Essn) <=2;
+    
+select distinct Essn from works_on where Pno in (1, 2, 5);
