@@ -1,0 +1,80 @@
+Oficina
+
+Sistema de controle e gerenciamento de execução de ordens de serviço em uma oficina mecânica
+
+Clientes levam veículos à oficina para serem consertados ou passarem por revisões periódicas
+
+Cada veículo é designado uma equipe de mecânicos que identifica os serviços a serem executados
+e preenche uma OS com data de entrega
+
+A partir da OS calcula-se o valor de cada serviço, consultado-se em uma tabela de referência de mão-de-obra
+
+O valor de cada peça também irá compor a OS
+
+O cliente autoriza a execução dos serviços
+
+A mesma equipe avalia e executa os serviços
+
+Entidades
+
+*** Clientes
+nome
+cpf
+endereço
+telefone
+email
+carro
+
+*** Carros
+marca
+modelo
+ano de fabricação
+placa
+fotos (para segurança do cliente e da oficina - ficam salvas em outra pasta)
+
+*** OS
+nº
+data de emissão
+cliente (fk)
+carro (fk)
+status
+previsão para entrega
+serviços
+valor por serviço (lançar junto com os serviços)
+peças
+valor das peças (lançar junto com as peças)
+valor total
+equipe (fk)
+
+*** status de OS
+/ onde incluiremos as seguintes situações para buscar depois
+em avaliação
+aguardando aprovação
+negado
+em execução
+interrompido
+finalizado
+
+*** Mecânicos
+código
+nome
+endereço
+especialidade
+
+
+*** Referência de mão de obra
+tipo de serviço
+valor
+
+*** peça
+nome
+código
+modelos compatíveis
+valor
+
+*** Pagamento
+nº OS
+valor
+forma de Pagamento
+desconto
+comentários
